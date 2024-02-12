@@ -1,7 +1,9 @@
 export function SendMoney(){
     return(
-        <div>
-            Hi there from sendmoney
+        <div className="h-screen bg-gray-300">
+            <div>
+                Hi
+            </div>
         </div>
     )
 }
