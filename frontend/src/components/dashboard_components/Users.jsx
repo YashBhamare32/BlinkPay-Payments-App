@@ -1,5 +1,5 @@
 import { useState } from "react"
-
+import { Link } from "react-router-dom"
 export const Userbar = ()=>{
     //backend call instead
     const [users , setUsers] = useState([{
@@ -25,7 +25,7 @@ export const Userbar = ()=>{
 }
 function User({user}){
     return(
-        <div className="mt-4 ml-2 w-full flex justify-between">
+        <div className="mt-4 ml-2 w-full flex justify-between ">
             <div className="flex">
                 <div className="rounded-full h-12 w-12 bg-slate-200 flex justify-center mt-1 mr-2 mb-1">
                     <div className="flex flex-col justify-center h-full text-xl">
@@ -36,8 +36,9 @@ function User({user}){
                     {user.firstName} {user.lastName}
                 </div>
             </div>
-            <div>
-                <button className="bg-gray-950 text-white p-2 rounded-md m-2">Send Money</button>
+            <div className="bg-gray-950 text-white p-2 rounded-md m-2">
+                {/* <button className="bg-gray-950 text-white p-2 rounded-md m-2">Send Money</button> */}
+                <Link to="/send" className="btn btn-primary">Send Money</Link>
             </div>
         </div>
     )
