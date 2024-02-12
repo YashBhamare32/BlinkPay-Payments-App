@@ -2,7 +2,7 @@ import { useState } from "react"
 
 export const Userbar = ()=>{
     //backend call instead
-    const [users , setUsers] = useState([{
+    const [users , setusers] = useState([{
         firstName:"Yash",
         lastName:"Bhamare",
         id:1
