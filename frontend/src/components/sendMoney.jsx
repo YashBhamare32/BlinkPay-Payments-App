@@ -1,18 +1,26 @@
-export function SendMoney(){
+import { useLocation } from "react-router-dom"
+
+export const SendMoney = ()=>{
+    const location = useLocation();
+    const queryParams = new URLSearchParams(location.search);
+
+    const name = queryParams.get("name");
+    const id = queryParams.get("id");
+    
     return(
         <div className="h-screen bg-gray-300 flex items-center justify-center">
             <div className="shadow w-2/6 bg-white p-12 rounded-lg">
-                <div className="flex justify-center mb-20 font-bold text-3xl">
+                <div className="flex justify-center mb-12 font-bold text-3xl">
                     Send Money
                 </div>
 
                 <div className="flex">
                     <div className="rounded-full h-12 w-12 bg-green-500 flex justify-center mt-1 mr-2 mb-1">
                         <div className="flex flex-col justify-center h-full text-xl text-white">
-                            A 
+                            {name[0]}
                         </div>
                     </div>
-                    <div className="flex font-bold text-2xl justify-center items-center ml-2">Friend's name</div>
+                    <div className="flex font-bold text-2xl justify-center items-center ml-2">{name}</div>
                 </div>
 
                 <div>

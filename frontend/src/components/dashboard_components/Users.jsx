@@ -1,22 +1,27 @@
-import { useState } from "react"
-import { Link } from "react-router-dom"
+import { useEffect, useState } from "react"
+import { Link, useNavigate } from "react-router-dom"
+import axios from "axios"
+import { Button } from "../Button"
 export const Userbar = ()=>{
     //backend call instead
-    const [users , setUsers] = useState([{
-        firstName:"Yash",
-        lastName:"Bhamare",
-        id:1
-    },{
-        firstName:"Akshat",
-        lastName:"Bhamare",
-        id:1 
-    }])
+    const [users , setUsers] = useState([])
+    const [filter , setFilter] = useState("");
+
+    useEffect(()=>{
+        axios.get("http://localhost:3000/api/v1/user/bulk?filter=" + filter)
+            .then(response =>{
+                setUsers(response.data.user);
+            })
+    } , [filter])
+
     return(
         <div className="ml-2">
             <div className="text-lg font-bold p-2 mt-2">
                 Users
             </div>
-            <input type="text" placeholder="Search Users..." className="shadow border-2 p-1 mx-2 w-full" />
+            <input onChange={(e)=>{
+                setFilter(e.target.value)
+            }} type="text" placeholder="Search Users..." className="shadow border-2 p-1 mx-2 w-full" />
             <div>
                 {users.map(user => <User user={user}/>)}
             </div>
@@ -24,6 +29,7 @@ export const Userbar = ()=>{
     )
 }
 function User({user}){
+    const navigate = useNavigate();
     return(
         <div className="mt-4 ml-2 w-full flex justify-between ">
             <div className="flex">
@@ -36,9 +42,15 @@ function User({user}){
                     {user.firstName} {user.lastName}
                 </div>
             </div>
-            <div className="bg-gray-950 text-white p-2 rounded-md m-2">
+            <div >
                 {/* <button className="bg-gray-950 text-white p-2 rounded-md m-2">Send Money</button> */}
-                <Link to="/send" className="btn btn-primary">Send Money</Link>
+                {/* <Link onClick={()=>{
+                    navigate("/send?id="+user._id+"&name="+user.firstName);
+                }} to="/send" className="btn btn-primary">Send Money</Link> */}
+                
+                <Button text={"Send Money"} onClick={()=>{
+                    navigate("/send?id="+user._id+"&name="+user.firstName);
+                }}/>
             </div>
         </div>
     )

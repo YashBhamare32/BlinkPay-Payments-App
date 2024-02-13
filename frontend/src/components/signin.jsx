@@ -25,15 +25,15 @@ export const Signin = ()=>{
                         
                     </div>
 
-                    <Button onClick={()=>{
-                        axios.post("http://localhost:3000/api/v1/user/signin" , {
+                    <Button onClick={async ()=>{
+                        const response = await axios.post("http://localhost:3000/api/v1/user/signin" , {
                             username,
                             password
-                        })+
+                        })
                     }} text={"Sign In"}/>
                     <BottomWarning text={"Don't have an account?"} buttonText={"Sign up"} to={"/signup"}/>
                 </div>
             </div>
         </div>
     )
-}-
+}

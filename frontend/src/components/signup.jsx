@@ -35,13 +35,14 @@ export const Signup = ()=>{
                 </div>
 
                 <Button onClick={async ()=>{
-                    await axios.post("http://localhost:3000/api/v1/user/signup" , {
+                    const response = await axios.post("http://localhost:3000/api/v1/user/signup" , {
                         username,
                         firstName,
                         lastName,
                         password
                     })
-                    console.log("Done")
+                    localStorage.setItem("token" , response.data.token)
+                    console.log(response.data.token)
                 }} text={"Sign Up"}/>
                 <BottomWarning text={"Already have an account?"} buttonText={"Sign in"} to={"/signin"}/>
             </div>
