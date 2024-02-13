@@ -1,3 +1,4 @@
+import { BottomWarning } from "./BottomWarning";
 import { Heading } from "./Heading";
 import { Input } from "./Input";
 
@@ -21,10 +22,7 @@ export function Signup(){
                 <div className="m-4 p-2 bg-black text-white rounded-md">
                     <button className="text-center">Sign Up</button>
                 </div>
-                <div>
-                    Already have an account? 
-                    <a className="underline font-bold" href="http://localhost:5173/signin">Login</a>
-                </div>
+                <BottomWarning text={"Already have an account?"} buttonText={"Sign in"} to={"/signin"}/>
             </div>
         </div>
     )
