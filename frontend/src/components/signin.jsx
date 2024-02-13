@@ -1,8 +1,12 @@
+import { useState } from "react";
 import { BottomWarning } from "./BottomWarning";
+import { Button } from "./Button";
 import { Heading } from "./Heading";
 import { Input } from "./Input";
-
-export function Signin(){
+import axios from "axios";
+export const Signin = ()=>{
+    const [username , setUsername] = useState("");
+    const [password , setPassword] = useState("");
     return(
         <div>
             <div className=" flex justify-center p-12 text-center h-screen bg-gray-400">
@@ -12,17 +16,24 @@ export function Signin(){
                         
                     </div>
                     <div>
-                        <Input title={"Email-Id"} placeHolder={"johndoe@example.com"}/>
-                        <Input title={"Password"} placeHolder={""}/>
+                        <Input onChange={(e)=>{
+                            setUsername(e.target.value);
+                        }} title={"Email-Id"} placeHolder={"johndoe@example.com"}/>
+                        <Input onChange={(e)=>{
+                            setPassword(e.target.value);
+                        }} title={"Password"} placeHolder={""}/>
                         
                     </div>
 
-                    <div className="m-4 p-2 bg-black text-white rounded-md">
-                        <button className="text-center">Sign Up</button>
-                    </div>
+                    <Button onClick={()=>{
+                        axios.post("http://localhost:3000/api/v1/user/signin" , {
+                            username,
+                            password
+                        })+
+                    }} text={"Sign In"}/>
                     <BottomWarning text={"Don't have an account?"} buttonText={"Sign up"} to={"/signup"}/>
                 </div>
             </div>
         </div>
     )
-}
+}-
