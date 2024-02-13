@@ -80,7 +80,8 @@ userRouter.post("/signin" , async (req , res)=>{
         } , JWT_SECRET);
 
         return res.json({
-            token
+            token,
+            firstName:user.firstName
         })
         return;
     }

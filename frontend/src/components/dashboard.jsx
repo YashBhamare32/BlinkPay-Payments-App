@@ -18,7 +18,7 @@ export const Dashboard =  ()=>{
     return (
         <div>
             {/* Change User to actual user's firstname */}
-            <Appbar firstName={"User"}/>
+            <Appbar firstName={localStorage.getItem("name")}/>
             <Balancebar value={balance}/>
             <Userbar />
         </div>
