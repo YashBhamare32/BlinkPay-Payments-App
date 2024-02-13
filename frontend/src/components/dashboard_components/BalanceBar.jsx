@@ -1,4 +1,7 @@
-export function Balancebar({value}){
+import { useState } from "react"
+
+export const Balancebar = ({value})=>{
+
     return <div className="flex p-2 mt-4">
         <div className="text-lg font-bold ml-2">
             Your Balance 
