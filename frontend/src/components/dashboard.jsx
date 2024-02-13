@@ -5,7 +5,8 @@ import { Userbar } from "./dashboard_components/Users";
 export function Dashboard(){
     return (
         <div>
-            <Appbar />
+            {/* Change User to actual user's firstname */}
+            <Appbar firstName={"User"}/>
             <Balancebar value={10000}/>
             <Userbar />
         </div>

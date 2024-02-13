@@ -30,6 +30,8 @@ export const Signin = ()=>{
                             username,
                             password
                         })
+                        localStorage.setItem("token" , response.data.token);
+                        console.log(response.data.token);
                     }} text={"Sign In"}/>
                     <BottomWarning text={"Don't have an account?"} buttonText={"Sign up"} to={"/signup"}/>
                 </div>
