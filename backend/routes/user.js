@@ -19,7 +19,8 @@ userRouter.post("/signup" , async (req , res)=>{
     const { success } = signupSchema.safeParse(req.body);
     if(!success){
         return res.json({
-            message: "Email already taken / Incorrect inputs succ"
+            message: "Email already taken / Incorrect inputs succ",
+            done:false
         })
     }
 
@@ -28,7 +29,8 @@ userRouter.post("/signup" , async (req , res)=>{
     })  
     if(existingUser){
         return res.json({
-            message: "Email already taken / Incorrect inputs exist"
+            message: "Email already taken / Incorrect inputs exist",
+            done:false
         })
     }
 
@@ -50,7 +52,8 @@ userRouter.post("/signup" , async (req , res)=>{
 
     return res.json({
         message: "User created successfully",
-        token:token
+        token:token,
+        done:true
     })
     
 })
@@ -65,7 +68,8 @@ userRouter.post("/signin" , async (req , res)=>{
     const { success } = signinSchema.safeParse(req.body);
     if(!success){
         return res.status(411).json({
-            message: "Incorrect Inputs"
+            message: "Incorrect Inputs",
+            done:false
         })
     }
 
@@ -81,13 +85,15 @@ userRouter.post("/signin" , async (req , res)=>{
 
         return res.json({
             token,
-            firstName:user.firstName
+            firstName:user.firstName,
+            done:true
         })
         return;
     }
 
     return res.status(411).json({
-        message: "Error while logging in"
+        message: "Error while logging in",
+        done:false
     })
 })
 

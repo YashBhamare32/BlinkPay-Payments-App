@@ -4,7 +4,15 @@ import { Button } from "./Button";
 import { Heading } from "./Heading";
 import { Input } from "./Input";
 import axios from "axios";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { redirect, useNavigate } from "react-router-dom";
+
 export const Signin = ()=>{
+    const navigate = useNavigate();
+    const notify = ()=>{
+        toast("Signed In Successful");
+    }
     const [username , setUsername] = useState("");
     const [password , setPassword] = useState("");
     return(
@@ -30,10 +38,34 @@ export const Signin = ()=>{
                             username,
                             password
                         })
-                        localStorage.setItem("token" , response.data.token);
-                        localStorage.setItem("name" , response.data.firstName);
-                        console.log(response.data.token);
+                        console.log(response.success);
+                        if(response.data.done==true||response.success==200){
+                            localStorage.setItem("token" , response.data.token)
+                            localStorage.setItem("name" , localStorage.getItem("name"))
+                            console.log(response.data.token);
+                            notify("Signed in successfully");
+                            setTimeout(()=>{
+                                navigate("/dashboard");
+                            } , 3000);
+                        }else{
+                            notify("Incorrect inputs / Error while logging in ");
+                        }
                     }} text={"Sign In"}/>
+
+
+                    <ToastContainer
+                        position="top-right"
+                        autoClose={5000}
+                        hideProgressBar={false}
+                        newestOnTop={false}
+                        closeOnClick
+                        rtl={false}
+                        pauseOnFocusLoss
+                        draggable
+                        pauseOnHover
+                        theme="dark"
+                        transition: Bounce
+                        />
                     <BottomWarning text={"Don't have an account?"} buttonText={"Sign up"} to={"/signup"}/>
                 </div>
             </div>
