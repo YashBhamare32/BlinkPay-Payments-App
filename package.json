@@ -4,5 +4,12 @@
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.2",
     "zod": "^3.22.4"
+  },
+  "scripts": {
+    "install-server": "cd backend && npm install",
+    "start-server": "cd backend && node app.js",
+    "install-client": "cd client && npm install",
+    "build-client": "cd client && npm run build",
+    "start-client": "cd client && npm run start"
   }
 }
