@@ -4,18 +4,5 @@
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.2",
     "zod": "^3.22.4"
-  },
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "install-server": "cd backend && npm install",
-    "start-server": "cd backend && node index.js",
-    "install-client": "cd frontend && npm install",
-    "build-client": "cd frontend && npm run dev",
-    "start-client": "cd frontend && npm run start"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  }
 }
