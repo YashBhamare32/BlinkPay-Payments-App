@@ -12,7 +12,7 @@
     "install-server": "cd backend && npm install",
     "start-server": "cd backend && node index.js",
     "install-client": "cd frontend && npm install",
-    "build-client": "cd frontend && npm run build",
+    "build-client": "cd frontend && npm run dev",
     "start-client": "cd frontend && npm run start"
   },
   "keywords": [],
