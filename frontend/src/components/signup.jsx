@@ -50,7 +50,7 @@ export const Signup = ()=>{
                         })
                         console.log("Response success" + response.data.done)
                         if(response.data.done==true){
-                            localStorage.setItem("token" , response.data.token)
+                            // localStorage.setItem("token" , response.data.token)
                             localStorage.setItem("name" , firstName)
                             console.log(response.data.token);
                             notify("Signed up successfully");
