@@ -34,20 +34,25 @@ export const Signin = ()=>{
                     </div>
 
                     <Button onClick={async ()=>{
-                        const response = await axios.post("http://localhost:3000/api/v1/user/signin" , {
-                            username,
-                            password
-                        })
-                        console.log(response.success);
-                        if(response.data.done==true||response.success==200){
-                            localStorage.setItem("token" , response.data.token)
-                            localStorage.setItem("name" , localStorage.getItem("name"))
-                            console.log(response.data.token);
-                            notify("Signed in successfully");
-                            setTimeout(()=>{
-                                navigate("/dashboard");
-                            } , 3000);
-                        }else{
+                        try {
+                            const response = await axios.post("http://localhost:3000/api/v1/user/signin" , {
+                                username,
+                                password
+                            })
+                            console.log(response.success);
+                            if(response.data.done==true||response.success==200){
+                                localStorage.setItem("token" , response.data.token)
+                                localStorage.setItem("name" , localStorage.getItem("name"))
+                                console.log(response.data.token);
+                                notify("Signed in successfully");
+                                setTimeout(()=>{
+                                    navigate("/dashboard");
+                                } , 3000);
+                            }else{
+                                notify("Incorrect inputs / Error while logging in ");
+                            }
+                        } catch (error) {
+                            console.log(error);
                             notify("Incorrect inputs / Error while logging in ");
                         }
                     }} text={"Sign In"}/>

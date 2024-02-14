@@ -41,23 +41,28 @@ export const Signup = ()=>{
                 </div>
 
                 <Button onClick={async ()=>{
-                    const response = await axios.post("http://localhost:3000/api/v1/user/signup" , {
-                        username,
-                        firstName,
-                        lastName,
-                        password
-                    })
-                    console.log("Response success" + response.data.done)
-                    if(response.data.done==true){
-                        localStorage.setItem("token" , response.data.token)
-                        localStorage.setItem("name" , firstName)
-                        console.log(response.data.token);
-                        notify("Signed up successfully");
-                        setTimeout(()=>{
-                            navigate("/signin");
-                        } , 3000);
-                    }else{
-                        notify("Incorrect inputs / Mail already in use");
+                    try {
+                        const response = await axios.post("http://localhost:3000/api/v1/user/signup" , {
+                            username,
+                            firstName,
+                            lastName,
+                            password
+                        })
+                        console.log("Response success" + response.data.done)
+                        if(response.data.done==true){
+                            localStorage.setItem("token" , response.data.token)
+                            localStorage.setItem("name" , firstName)
+                            console.log(response.data.token);
+                            notify("Signed up successfully");
+                            setTimeout(()=>{
+                                navigate("/signin");
+                            } , 3000);
+                        }else{
+                            notify("Incorrect inputs / Mail already in use");   
+                        }
+                    } catch (error) {
+                        conosole.log(error)
+                        notify("Incorrect inputs / Mail already in use");   
                     }
                 }} text={"Sign Up"}/>
                 <ToastContainer
