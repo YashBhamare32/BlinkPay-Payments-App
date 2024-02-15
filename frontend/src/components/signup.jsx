@@ -61,7 +61,7 @@ export const Signup = ()=>{
                             notify("Incorrect inputs / Mail already in use");   
                         }
                     } catch (error) {
-                        conosole.log(error)
+                        console.log(error);
                         notify("Incorrect inputs / Mail already in use");   
                     }
                 }} text={"Sign Up"}/>
