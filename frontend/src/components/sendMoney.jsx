@@ -1,13 +1,18 @@
 import axios from "axios";
 import { useState } from "react";
-import { useLocation } from "react-router-dom"
-
+import { useLocation, useNavigate } from "react-router-dom"
+import { ToastContainer , toast } from "react-toastify";
 export const SendMoney = ()=>{
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
 
     const name = queryParams.get("name");
     const id = queryParams.get("id");
+
+    const navigate = useNavigate();
+    const notify = (notification)=>{
+        toast(notification);
+    }
 
     const [amount , setAmount] = useState(0);
     console.log(localStorage.getItem("token"))
@@ -36,16 +41,44 @@ export const SendMoney = ()=>{
                     </div>
                     <div className="m-2">
                         <button onClick={async()=>{
-                            await axios.post("http://localhost:3000/api/v1/account/transfer" , {
-                                to:id,
-                                amount
-                            },{
-                                headers:{
-                                    Authorization:"Bearer "+localStorage.getItem("token")
+                            try {
+                                const response = await axios.post("http://localhost:3000/api/v1/account/transfer" , {
+                                    to:id,
+                                    amount
+                                },{
+                                    headers:{
+                                        Authorization:"Bearer "+localStorage.getItem("token")
+                                    }
+                                })
+                                console.log(response.data.done);
+                                if(response.data.done){
+                                    notify("Transfer successful");
+                                    setTimeout(()=>{
+                                        navigate("/dashboard");
+                                    } , 2000);
                                 }
-                            })
+                            } catch (error) {
+                                console.log(error);
+                                notify("Insufficient balance");
+                                setTimeout(()=>{
+                                    navigate("/dashboard");
+                                } , 2000);
+                            }
                         }} className="bg-green-500 text-white w-full h-9 mt-2 rounded-md">Initiate transfer</button>
                     </div>
+                    <ToastContainer
+                        position="top-right"
+                        autoClose={5000}
+                        hideProgressBar={false}
+                        newestOnTop={false}
+                        closeOnClick
+                        rtl={false}
+                        pauseOnFocusLoss
+                        draggable
+                        pauseOnHover
+                        theme="dark"
+                        transition: Bounce
+                        />
                 </div>
             </div>
         </div>
