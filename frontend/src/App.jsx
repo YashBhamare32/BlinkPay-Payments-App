@@ -1,17 +1,11 @@
 import React from "react"
 import "./index.css"
-import { useEffect } from "react"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import { Signup } from "./components/signup"
 import { Signin } from "./components/signin"
 import { Dashboard } from "./components/dashboard"
 import { SendMoney } from "./components/sendMoney"
 function App() {
-  useEffect(() => {
-    fetch("https://blinkpay-backend.vercel.app/")
-      .then((res) => res.json())
-      .then((data) => setMessage(data.message));
-  },[]);
   return (
     <div>
       <BrowserRouter>

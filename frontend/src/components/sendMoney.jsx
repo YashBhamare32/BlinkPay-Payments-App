@@ -42,7 +42,7 @@ export const SendMoney = ()=>{
                     <div className="m-2">
                         <button onClick={async()=>{
                             try {
-                                const response = await axios.post("http://localhost:3000/api/v1/account/transfer" , {
+                                const response = await axios.post("https://blinkpay-backend.vercel.app/api/v1/account/transfer" , {
                                     to:id,
                                     amount
                                 },{

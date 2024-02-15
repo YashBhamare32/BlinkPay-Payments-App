@@ -7,7 +7,7 @@ import axios from "axios";
 export const Dashboard =  ()=>{
     const [balance , setBalance] = useState(0);
     useEffect(()=>{
-        const response = axios.get("http://localhost:3000/api/v1/account/balance",{
+        const response = axios.get("https://blinkpay-backend.vercel.app/api/v1/account/balance",{
             headers:{
                 Authorization:"Bearer "+localStorage.getItem("token")
             }
