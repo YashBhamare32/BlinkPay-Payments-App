@@ -6,6 +6,11 @@ import { Signin } from "./components/signin"
 import { Dashboard } from "./components/dashboard"
 import { SendMoney } from "./components/sendMoney"
 function App() {
+  useEffect(() => {
+    fetch("https://blinkpay-backend.vercel.app/")
+      .then((res) => res.json())
+      .then((data) => setMessage(data.message));
+  },[]);
   return (
     <div>
       <BrowserRouter>
