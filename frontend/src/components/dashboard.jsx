@@ -3,11 +3,11 @@ import { Balancebar } from "./dashboard_components/BalanceBar";
 import { Userbar } from "./dashboard_components/Users";
 import {useEffect, useState} from "react"
 import axios from "axios";
-
+const balanceLink = import.meta.env.VITE_BALANCE_CALL;
 export const Dashboard =  ()=>{
     const [balance , setBalance] = useState(0);
     useEffect(()=>{
-        const response = axios.get("https://blinkpay-backend.vercel.app/api/v1/account/balance",{
+        const response = axios.get(balanceLink ,{
             headers:{
                 Authorization:"Bearer "+localStorage.getItem("token")
             }

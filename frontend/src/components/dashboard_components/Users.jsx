@@ -2,13 +2,15 @@ import { useEffect, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import axios from "axios"
 import { Button } from "../Button"
+const searchLink = import.meta.env.VITE_SEARCH_FILTER_CALL;
+
 export const Userbar = ()=>{
     //backend call instead
     const [users , setUsers] = useState([])
     const [filter , setFilter] = useState("");
 
     useEffect(()=>{
-        axios.get("https://blinkpay-backend.vercel.app/api/v1/user/bulk?filter=" + filter)
+        axios.get(searchLink + filter)
             .then(response =>{
                 setUsers(response.data.user);
             })

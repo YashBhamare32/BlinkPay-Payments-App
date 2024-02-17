@@ -7,7 +7,8 @@ import {React} from "react"
 import axios from "axios"
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import {ToastContainer , toast} from "react-toastify"
-
+const signupLink = import.meta.env.VITE_SIGNUP_CALL;
+console.log(signupLink)
 export const Signup = ()=>{
     const [firstName , setFirstName] = useState("")
     const [lastName , setLastName] = useState("")
@@ -42,11 +43,13 @@ export const Signup = ()=>{
 
                 <Button onClick={async ()=>{
                     try {
-                        const response = await axios.post("https://blinkpay-backend.vercel.app/api/v1/user/signup" , {
+                        const response = await axios.post(signupLink , {
                             username,
                             firstName,
                             lastName,
                             password
+                        } ,{
+                            headers:{"Content-type":'application/json'}
                         })
                         console.log("Response success" + response.data.done)
                         if(response.data.done==true){

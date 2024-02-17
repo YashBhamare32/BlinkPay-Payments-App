@@ -2,6 +2,8 @@ import axios from "axios";
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom"
 import { ToastContainer , toast } from "react-toastify";
+const transferLink = import.meta.env.VITE_TRANSFER_CALL;
+
 export const SendMoney = ()=>{
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
@@ -42,7 +44,7 @@ export const SendMoney = ()=>{
                     <div className="m-2">
                         <button onClick={async()=>{
                             try {
-                                const response = await axios.post("https://blinkpay-backend.vercel.app/api/v1/account/transfer" , {
+                                const response = await axios.post(transferLink , {
                                     to:id,
                                     amount
                                 },{

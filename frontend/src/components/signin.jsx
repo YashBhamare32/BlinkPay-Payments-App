@@ -7,7 +7,7 @@ import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { redirect, useNavigate } from "react-router-dom";
-
+const signinLink = import.meta.env.VITE_SIGNIN_CALL;
 export const Signin = ()=>{
     const navigate = useNavigate();
     const notify = ()=>{
@@ -35,7 +35,7 @@ export const Signin = ()=>{
 
                     <Button onClick={async ()=>{
                         try {
-                            const response = await axios.post("https://blinkpay-backend.vercel.app/api/v1/user/signin" , {
+                            const response = await axios.post(signinLink , {
                                 username,
                                 password
                             })
