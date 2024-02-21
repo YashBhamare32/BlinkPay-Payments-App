@@ -4,7 +4,7 @@ const cors = require('cors');
 const mainRouter = require("./routes/routes");
 
 const app = express();
-
+app.use(cors()); 
 // const corsOptions = {
 //     origin: "https://blinkpay-frontend.vercel.app/signup", // frontend URI (ReactJS)
 //     origin: "https://blinkpay-frontend.vercel.app/signin", // frontend URI (ReactJS)
@@ -33,7 +33,7 @@ const handler = (req, res) => {
   res.end(d.toString())
 }
 
-app.use(cors()); 
+// app.use(cors()); 
 // app.use(cors(corsOptions));
 app.use(express.json()); 
 
