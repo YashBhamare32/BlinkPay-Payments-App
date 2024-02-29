@@ -11,7 +11,7 @@ const signinLink = import.meta.env.VITE_SIGNIN_CALL;
 export const Signin = ()=>{
     const navigate = useNavigate();
     const notify = ()=>{
-        toast("Signed In Successful");
+        toast("Signed In Successfully");
     }
     const [username , setUsername] = useState("");
     const [password , setPassword] = useState("");
@@ -52,7 +52,7 @@ export const Signin = ()=>{
                                 notify("Incorrect inputs / Error while logging in ");
                             }
                         } catch (error) {
-                            console.log(error);
+                            // console.log(error);
                             notify("Incorrect inputs / Error while logging in ");
                         }
                     }} text={"Sign In"}/>

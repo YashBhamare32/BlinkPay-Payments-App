@@ -18,6 +18,10 @@ export const Signup = ()=>{
     const notify = (notification)=>{
         toast(notification);
     }
+    // const test = import.meta.env.VITE_BACKEND_URL;
+
+    // console.log("GGg", test);
+    // // console.log();
     return(
         <div className=" flex justify-center p-12 text-center h-screen bg-gray-400">
             <div className=" bg-white rounded-md p-6">
