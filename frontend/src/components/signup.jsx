@@ -32,16 +32,16 @@ export const Signup = ()=>{
                 <div>
                     <Input onChange={(e)=>{
                         setFirstName(e.target.value);
-                    }} title={"First Name"} placeHolder={"John"}/>
+                    }} type={"text"} title={"First Name"} placeHolder={"John"}/>
                     <Input onChange={(e)=>{
                         setLastName(e.target.value);
-                    }} title={"Last Name"} placeHolder={"Doe"}/>
+                    }} type={"text"} title={"Last Name"} placeHolder={"Doe"}/>
                     <Input onChange={(e)=>{
                         setUsername(e.target.value);
-                    }} title={"Email-Id"} placeHolder={"johndoe@example.com"}/>
+                    }} type={"text"} title={"Email-Id"} placeHolder={"johndoe@example.com"}/>
                     <Input onChange={(e)=>{
                         setPassword(e.target.value);
-                    }} title={"Password"} placeHolder={""}/>
+                    }} type={"password"} title={"Password"} placeHolder={""}/>
                     
                 </div>
 

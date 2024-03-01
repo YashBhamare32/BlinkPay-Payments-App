@@ -26,10 +26,10 @@ export const Signin = ()=>{
                     <div>
                         <Input onChange={(e)=>{
                             setUsername(e.target.value);
-                        }} title={"Email-Id"} placeHolder={"johndoe@example.com"}/>
+                        }} type={"type"} title={"Email-Id"} placeHolder={"johndoe@example.com"}/>
                         <Input onChange={(e)=>{
                             setPassword(e.target.value);
-                        }} title={"Password"} placeHolder={""}/>
+                        }} type={"password"} title={"Password"} placeHolder={""}/>
                         
                     </div>
 
