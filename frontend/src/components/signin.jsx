@@ -8,6 +8,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { redirect, useNavigate } from "react-router-dom";
 const signinLink = import.meta.env.VITE_SIGNIN_CALL;
+
 export const Signin = ()=>{
     const navigate = useNavigate();
     const notify = ()=>{
@@ -42,7 +43,9 @@ export const Signin = ()=>{
                             console.log(response.success);
                             if(response.data.done==true||response.success==200){
                                 localStorage.setItem("token" , response.data.token)
-                                localStorage.setItem("name" , localStorage.getItem("name"))
+
+                                //get firstName from database logic
+                                localStorage.setItem("name" , response.data.firstName);
                                 console.log(response.data.token);
                                 notify("Signed in successfully");
                                 setTimeout(()=>{
