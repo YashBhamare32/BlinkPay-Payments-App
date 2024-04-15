@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"
+    environment:
+      - VITE_SIGNUP_CALL=http://backend:3000/api/v1/user/signup
+      - VITE_SIGNIN_CALL=http://backend:3000/api/v1/user/signin
+      - VITE_TRANSFER_CALL=http://backend:3000/api/v1/account/transfer
+      - VITE_BALANCE_CALL=http://backend:3000/api/v1/account/balance
+      - VITE_SEARCH_FILTER_CALL=http://backend:3000/api/v1/user/bulk?filter=
+      - VITE_BACKEND_URL=http://backend:3000
+    networks:
+      - mern_network
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      VITE_SIGNUP_CALL: http://backend:3000/api/v1/user/signup
+      VITE_SIGNIN_CALL: http://backend:3000/api/v1/user/signin
+      VITE_TRANSFER_CALL: http://backend:3000/api/v1/account/transfer
+      VITE_BALANCE_CALL: http://backend:3000/api/v1/account/balance
+      VITE_SEARCH_FILTER_CALL: http://backend:3000/api/v1/user/bulk?filter=
+      VITE_BACKEND_URL: http://backend:3000
+    networks:
+      - mern_network
+
+  database:
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - mern_network
+
+networks:
+  mern_network:
+    driver: bridge
+
+volumes:
+  mongo-data:
