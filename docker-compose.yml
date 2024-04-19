@@ -8,12 +8,12 @@ services:
     ports:
       - "5173:5173"
     environment:
-      - VITE_SIGNUP_CALL=http://backend:3000/api/v1/user/signup
-      - VITE_SIGNIN_CALL=http://backend:3000/api/v1/user/signin
-      - VITE_TRANSFER_CALL=http://backend:3000/api/v1/account/transfer
-      - VITE_BALANCE_CALL=http://backend:3000/api/v1/account/balance
-      - VITE_SEARCH_FILTER_CALL=http://backend:3000/api/v1/user/bulk?filter=
-      - VITE_BACKEND_URL=http://backend:3000
+      - VITE_SIGNUP_CALL=http://localhost:3000/api/v1/user/signup
+      - VITE_SIGNIN_CALL=http://localhost:3000/api/v1/user/signin
+      - VITE_TRANSFER_CALL=http://localhost:3000/api/v1/account/transfer
+      - VITE_BALANCE_CALL=http://localhost:3000/api/v1/account/balance
+      - VITE_SEARCH_FILTER_CALL=http://localhost:3000/api/v1/user/bulk?filter=
+      - VITE_localhost_URL=http://localhost:3000
     networks:
       - mern_network
 
@@ -24,12 +24,12 @@ services:
     ports:
       - "3000:3000"
     environment:
-      VITE_SIGNUP_CALL: http://backend:3000/api/v1/user/signup
-      VITE_SIGNIN_CALL: http://backend:3000/api/v1/user/signin
-      VITE_TRANSFER_CALL: http://backend:3000/api/v1/account/transfer
-      VITE_BALANCE_CALL: http://backend:3000/api/v1/account/balance
-      VITE_SEARCH_FILTER_CALL: http://backend:3000/api/v1/user/bulk?filter=
-      VITE_BACKEND_URL: http://backend:3000
+      VITE_SIGNUP_CALL: http://localhost:3000/api/v1/user/signup
+      VITE_SIGNIN_CALL: http://localhost:3000/api/v1/user/signin
+      VITE_TRANSFER_CALL: http://localhost:3000/api/v1/account/transfer
+      VITE_BALANCE_CALL: http://localhost:3000/api/v1/account/balance
+      VITE_SEARCH_FILTER_CALL: http://localhost:3000/api/v1/user/bulk?filter=
+      VITE_BACKEND_URL: http://localhost:3000
     networks:
       - mern_network
 
